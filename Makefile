@@ -1,11 +1,11 @@
 test:
-    python -m pytest
+	python -m pytest
 
 lint:
-    python -m ruff check .
+	python -m ruff check .
 
 typecheck:
-    python -m mypy .
+	python -m mypy .
 
 format:
-    python -m ruff format .
+	python -m ruff format .
