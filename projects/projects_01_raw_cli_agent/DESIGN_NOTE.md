@@ -26,11 +26,21 @@ Define each tool before implementation.
 
 ### `calculator`
 
-- Purpose:
+- Purpose: Given a set of numbers and mathematical operation symbols calculate the final answer based on BODMAS rule
 - Input schema:
+{numbers : "integers",
+symbols: "+","-"."*","/"}
 - Output schema:
+{answer: "integers",
+error: "error"| "null"
+}
 - Validation rules:
+ - division by 0 is not allowed
+ - BODMAS rule is followed
+ -brackets are not considered
 - Failure behavior:
+- if division is by 0- return "Dividing by 0"
+- if calculation times out, return "Look at the numbers, timing out"
 
 ### `get_current_time`
 
