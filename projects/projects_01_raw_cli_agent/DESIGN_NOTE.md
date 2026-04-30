@@ -26,12 +26,14 @@ Define each tool before implementation.
 
 ### `calculator`
 
-- Purpose: Given a set of numbers and mathematical operation symbols calculate the final answer based on BODMAS rule
+- Purpose: Evaluate a simple arithmetic expression made from numbers and operators using BODMAS precedence. Brackets are not supported.
 - Input schema:
-{numbers : "integers",
-symbols: "+","-"."*","/"}
+{
+"numbers" : [number],
+"operators": ["+","-"."*","/"]
+}
 - Output schema:
-{answer: "integers",
+{answer: number | null,
 error: "error"| "null"
 }
 - Validation rules:
