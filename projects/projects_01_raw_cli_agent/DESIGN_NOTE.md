@@ -34,22 +34,35 @@ Define each tool before implementation.
 }
 - Output schema:
 {answer: number | null,
-error: "error"| "null"
+error: string| null
 }
 - Validation rules:
- - division by 0 is not allowed
- - BODMAS rule is followed
- -brackets are not considered
+ -'numbers' must contain at least 1 item.
+ -'operators' must contain exactly 'len(numbers)-1' items.
+ - Operators must be one of `+`, `-`, `*`, `/`.
+ - Division by zero is not allowed
+ - Brackets are not supported
+ - Evaluation follows BODMAS precedence
+
 - Failure behavior:
-- if division is by 0- return "Dividing by 0"
-- if calculation times out, return "Look at the numbers, timing out"
+- if division by 0 detected, return:
+{"answer": null}
+- if arguments are malformed, return:
 
 ### `get_current_time`
 
-- Purpose:
-- Input schema:
+- Purpose: Given a place, give current time in the time zone the place is in.
+- Input schema: 
+{
+    place : string
+
+}
 - Output schema:
+{
+    time: time
+}
 - Validation rules:
+- Place name should match with first 3 letters
 - Failure behavior:
 
 ### `search_local_notes`
