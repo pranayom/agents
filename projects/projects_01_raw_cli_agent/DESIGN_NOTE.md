@@ -51,7 +51,7 @@ error: string| null
 
 ### `get_current_time`
 
-- Purpose: Given a place, give current time in the time zone the place is in.
+- Purpose: Given a supported place name, return the curre
 - Input schema: 
 {
     place : string
