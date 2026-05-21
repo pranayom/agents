@@ -51,7 +51,7 @@ error: string| null
 
 ### `get_current_time`
 
-- Purpose: Given a supported place name, return the curre
+- Purpose: Given a supported place name, return the current time of the place
 - Input schema: 
 {
     place : string
@@ -64,6 +64,41 @@ error: string| null
 - Validation rules:
 - Place name should match with first 3 letters
 - Failure behavior:
+
+Suggestions:
+
+- Support a small explicit place list in v1, for example `New York`, `London`, `Tokyo`, and `Sydney`.
+- Map each supported place to an IANA timezone such as `America/New_York`, not a fixed UTC offset.
+- Accept case-insensitive full names.
+- Accept 3-letter prefixes only when they match exactly one supported place.
+- Reject ambiguous prefixes instead of guessing.
+- Normalize the matched place to one canonical name before returning the result.
+- Prefer this output shape:
+{
+    "place": string | null,
+    "timezone": string | null,
+    "iso_time": string | null,
+    "display_time": string | null,
+    "error": string | null
+}
+- Use an injectable clock in the implementation so tests do not depend on the real current time.
+- Keep this tool read-only and local. It should not call a network API.
+
+Suggested failure behavior:
+
+- Unknown place: return `error: "unsupported_place"`.
+- Ambiguous prefix: return `error: "ambiguous_place"`.
+- Missing or non-string `place`: return `error: "invalid_arguments"`.
+
+Suggested tests:
+
+- full place name works
+- lowercase place name works
+- supported 3-letter prefix works
+- unknown place returns `unsupported_place`
+- ambiguous prefix returns `ambiguous_place`
+- non-string `place` returns `invalid_arguments`
+- injected clock produces deterministic output
 
 ### `search_local_notes`
 
