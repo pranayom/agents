@@ -272,7 +272,7 @@ Logs must not include:
 - Should `search_local_notes` use simple case-insensitive substring matching in v1, or a small scoring algorithm?
 A: small scoring algorithm
 - Where should the default local notes directory live for Project 1?
-A: In the project_01_raw_cli_agent folder
+A: In the project_01_raw_cli_agent folder under notes subfolder
 - Should validation failures be sent back to the model for self-correction, or should some failures immediately stop the run?
 A: failure should stop the run
 - What exact maximum step count should v1 use by default?
