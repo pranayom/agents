@@ -33,10 +33,19 @@ This file tracks what has been completed and what should happen next.
 - Identified and corrected the import issue where `Protocol` should come from `typing`, not `collections.abc`.
 - Added and ran a fake-model smoke test for the rough loop.
 - Confirmed the smoke test passes and the loop reaches `completed`.
+- Added focused pytest coverage for the current Project 1 slice:
+  - `calculator` happy path
+  - `calculator` malformed arguments
+  - `calculator` division by zero
+  - `finish` happy path
+  - `finish` invalid arguments
+  - unknown tool handling
+  - max-step handling
+- Confirmed the focused current-slice tests pass.
 
 ### Current Checkpoint
 
-Project 1 has passed the first fake-model rough-loop smoke test.
+Project 1 has passed the first fake-model rough-loop smoke test and focused tests for the current implemented slice.
 
 The application-owned loop has now been proven for the basic happy path:
 
@@ -46,18 +55,10 @@ The application-owned loop has now been proven for the basic happy path:
 4. The loop records observations.
 5. The loop stops on `finish` or max steps.
 
-The immediate learning goal is now to turn the rough smoke-tested path into a small deterministic test suite before adding more tools or a real LLM client.
+The immediate learning goal is now to add the next approved tool, `get_current_time`, while preserving deterministic tests.
 
 ### Next Steps
 
-- Add or finish tests for the current slice:
-  - `calculator` happy path
-  - `calculator` malformed arguments
-  - `calculator` division by zero
-  - `finish` happy path
-  - `finish` invalid arguments
-  - unknown tool handling
-  - max-step handling
 - Add `get_current_time` to `tools.py`.
 - Register `get_current_time` in `TOOL_REGISTRY`.
 - Add deterministic tests for `get_current_time` using an injected clock.
