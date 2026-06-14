@@ -31,12 +31,14 @@ This file tracks what has been completed and what should happen next.
   - a fake model client
   - a max-step agent loop
 - Identified and corrected the import issue where `Protocol` should come from `typing`, not `collections.abc`.
+- Added and ran a fake-model smoke test for the rough loop.
+- Confirmed the smoke test passes and the loop reaches `completed`.
 
 ### Current Checkpoint
 
-Project 1 is at the first rough-loop implementation stage.
+Project 1 has passed the first fake-model rough-loop smoke test.
 
-The immediate learning goal is to prove the application-owned loop works before adding a real LLM client:
+The application-owned loop has now been proven for the basic happy path:
 
 1. The model client proposes a tool call.
 2. The application validates the tool name.
@@ -44,9 +46,10 @@ The immediate learning goal is to prove the application-owned loop works before 
 4. The loop records observations.
 5. The loop stops on `finish` or max steps.
 
+The immediate learning goal is now to turn the rough smoke-tested path into a small deterministic test suite before adding more tools or a real LLM client.
+
 ### Next Steps
 
-- Run the smoke test for the fake model client and confirm the loop reaches `completed`.
 - Add or finish tests for the current slice:
   - `calculator` happy path
   - `calculator` malformed arguments
